@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour
+public class ObjectMover : MonoBehaviour
 {
-    public bool UseMovePosition, UseFixedUpdate;
+    [SerializeField] bool UseMovePosition, UseFixedUpdate;
     Rigidbody2D rigid;
     Vector3 originPos;
 
