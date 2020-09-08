@@ -7,6 +7,7 @@ public class ObjectMover : MonoBehaviour
     [SerializeField] bool UseMovePosition, UseFixedUpdate;
     Rigidbody2D rigid;
     Vector3 originPos;
+    int counter = 0;
 
     void Awake(){
         rigid = GetComponent<Rigidbody2D>();
@@ -16,6 +17,8 @@ public class ObjectMover : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log("Update " + counter);
+
         if (UseFixedUpdate)
             return;
 
@@ -25,7 +28,17 @@ public class ObjectMover : MonoBehaviour
             transform.position += Vector3.right * Time.deltaTime;
     }
 
+    void LateUpdate(){
+        counter++;
+    }
+
+    void OnRenderObject(){
+         Debug.Log("Object rendered " + counter);       
+    }
+
     void FixedUpdate(){
+        Debug.Log("FixedUpdate " + counter);
+
         if (!UseFixedUpdate)
             return;
 
